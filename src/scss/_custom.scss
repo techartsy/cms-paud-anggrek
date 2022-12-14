@@ -1,0 +1,22 @@
+// Here you can add other styles
+.total-pax {
+  text-align: right;
+  padding-right: 2rem;
+}
+.export-btn {
+  float: right !important;
+  border: 1px solid green;
+}
+.logout-btn:hover {
+  cursor: pointer;
+}
+
+.logout {
+  padding-left: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  font-size: 0.875rem;
+}
+.logout:hover {
+  cursor: pointer;
+}
