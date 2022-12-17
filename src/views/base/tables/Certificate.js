@@ -133,9 +133,7 @@ const Tables = () => {
                     return (
                       <td className="py-2" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                         <CButton color="danger" size="sm" style={{cursor: 'pointer'}} onClick={() => onClickDeleteCertificate(item)}>
-                          {/* Delete
-                          cilTrash */}
-                          <CIcon style={{cursor: 'pointer'}} size={'md'} name={'cilTrash'} />
+                          Delete
                         </CButton>
                       </td>
                     )
