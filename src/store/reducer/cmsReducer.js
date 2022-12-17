@@ -17,6 +17,7 @@ import {
   SET_ASSESSMENT,
   SET_REMOVE_ASSESSMENT,
   SET_REMOVE_CERTIFICATE,
+  SET_REMOVE_STUDENT,
 } from "../constants/index";
 
 export const initialState = {
@@ -109,6 +110,13 @@ const invitationState = (state = initialState, action) =>
           return item.id !== action.certificate.id
         })
         draft.certificates = newCertificates;
+        break;
+      case SET_REMOVE_STUDENT:
+        let students = draft.students;
+        let newStudents = students.filter((item) => {
+          return item.id !== action.student.id
+        })
+        draft.students = newStudents;
         break;
       default:
         return state;

@@ -36,6 +36,8 @@ import {
   SET_REMOVE_ASSESSMENT,
   REMOVE_CERTIFICATE,
   SET_REMOVE_CERTIFICATE,
+  REMOVE_STUDENT,
+  SET_REMOVE_STUDENT
 } from '../constants';
 
 export const login = (userData, cb) => {
@@ -311,6 +313,22 @@ export const setRemoveCertificate = (certificate) => {
   return {
     type: SET_REMOVE_CERTIFICATE,
     certificate,
+  }
+}
+
+export const removeStudent = (student, cbSuccess, cbFailed) => {
+  return {
+    type: REMOVE_STUDENT,
+    student,
+    cbSuccess,
+    cbFailed,
+  };
+}
+
+export const setRemoveStudent = (student) => {
+  return {
+    type: SET_REMOVE_STUDENT,
+    student,
   }
 }
 

@@ -21,6 +21,7 @@ import {
   FETCH_ASSESSMENT,
   REMOVE_ASSESSMENT,
   REMOVE_CERTIFICATE,
+  REMOVE_STUDENT,
 } from '../constants';
 import {
   login,
@@ -43,6 +44,7 @@ import {
   fetchAssessment,
   removeAssessment,
   removeCertificate,
+  removeStudent,
 } from "../../domain/API";
 import {
   setIsLogin,
@@ -62,6 +64,7 @@ import {
   setAssessment,
   setRemoveAssessment,
   setRemoveCertificate,
+  setRemoveStudent,
 } from "../action/action";
 
 function* doLogin({ userData, cb }) {
@@ -326,6 +329,18 @@ function* doRemoveCertificate({ certificate, cbSuccess, cbFailed }) {
   }
 }
 
+function* doRemoveStudent({ student, cbSuccess, cbFailed }) {
+  try {
+    const response = yield call(removeStudent, student);
+    if (response) {
+      cbSuccess && cbSuccess();
+      yield put(setRemoveStudent(student))
+    }
+  } catch (error) {
+    cbFailed && cbFailed('Maaf, terjadi kesalahan pada sistem. Silakan coba lagi')
+  }
+}
+
 export default function* sagas() {
   yield takeLatest(LOGIN, doLogin);
   yield takeLatest(GET_ALL_STUDENT, doFetchStudent);
@@ -347,4 +362,5 @@ export default function* sagas() {
   yield takeLatest(FETCH_ASSESSMENT, doFetchAssessment);
   yield takeLatest(REMOVE_ASSESSMENT, doRemoveAssessment);
   yield takeLatest(REMOVE_CERTIFICATE, doRemoveCertificate);
+  yield takeLatest(REMOVE_STUDENT, doRemoveStudent);
 }

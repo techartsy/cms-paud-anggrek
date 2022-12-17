@@ -30,7 +30,11 @@ const fields = [
     sorter: true,
   },
   {
-    key: 'Nama Lengkap'
+    key: 'Nama Siswa'
+  },
+  {
+    key: 'nama_pengirim',
+    label: 'Nama Pengirim'
   },
   {
     key: "kode_pembayaran",
@@ -179,7 +183,7 @@ const Tables = () => {
                   No: (item, index) => {
                     return <td className="py-2">{index + 1}.</td>;
                   },
-                  'Nama Lengkap': (item, index) => {
+                  'Nama Siswa': (item, index) => {
                     return <td className="py-2">{item.userPayment.nama_lengkap}</td>
                   },
                   'Bukti Pembayaran': (item, index) => {
@@ -204,11 +208,11 @@ const Tables = () => {
                   },
                   'Status':
                     (item)=>(
-                      <td>
+                      <td style={{width: '150px'}}>
                         <CBadge style={{padding: '5%'}} color={getBadge(item.status)}>
                           {item.status}
                         </CBadge>
-                        <CIcon onClick={() => openPopupUpdata(item)} style={{marginLeft: '4%', cursor: 'pointer'}} color="success" size={'sm'} name={'cilPencil'} />
+                        <CIcon onClick={() => openPopupUpdata(item)} style={{marginLeft: '5%', cursor: 'pointer'}} color="success" size={'sm'} name={'cilPencil'} />
                       </td>
                     ),
                 }}
