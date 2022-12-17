@@ -23,6 +23,7 @@ const urls = {
   removeTestimony: '/testimony/delete',
   fetchAssessment: '/assessment',
   removeAssessment: '/assessment/delete',
+  removeStudent: '/student/delete',
   // submitContact: "contact/order",
   // post_registration: "guest",
   // post_gift_confirmation: "gift",
@@ -134,4 +135,8 @@ export const removeAssessment = (assessment) => {
 
 export const removeCertificate = (certificate) => {
   return callAPI(`${urls.removeCertificate}/${certificate.id}`, "delete", {});
+};
+
+export const removeStudent = (student) => {
+  return callAPI(`${urls.removeStudent}/${student.id}`, "delete", {});
 };
