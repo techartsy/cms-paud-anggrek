@@ -6,6 +6,7 @@ import {
   CCol,
   CDataTable,
   CRow,
+  CBadge,
 } from "@coreui/react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -41,8 +42,8 @@ const fields = [
     label: "Nomor Pendaftaran",
   },
   {
-    key: "status_pendaftaran",
-    label: "Status Pendaftaran",
+    key: "Status Pendaftaran",
+    // label: "Status Pendaftaran",
   },
 ];
 
@@ -53,24 +54,28 @@ const Tables = () => {
   useEffect(() => {
     dispatch(getAllStudent());
   }, []);
-  // useEffect(() => {
-  //   let count = 0;
-  //   students && students.map((item) => {
-  //     count = count + Number(item.pax);
-  //   })
-  //   setTotalPax(count);
-  // }, [students])
+
+  const getBadge = (status)=>{
+    switch (status.toLowerCase()) {
+      case 'approved': return 'success'
+      case 'pending': return 'secondary'
+      case 'waiting approval': return 'warning'
+      case 'cancel': return 'danger'
+      default: return 'primary'
+    }
+  }
+
   return (
     <>
       <CRow>
         <CCol xs="12" lg="12">
           <CCard>
             <CCardHeader>Data Siswa</CCardHeader>
-            <CCardBody>
+            <CCardBody style={{textAlign: 'center'}}>
               <CDataTable
                 items={students && students}
                 fields={fields}
-                itemsPerPage={10}
+                itemsPerPage={5}
                 dark
                 pagination
                 sorter
@@ -80,12 +85,21 @@ const Tables = () => {
                   No: (item, index) => {
                     return <td className="py-2">{index + 1}.</td>;
                   },
+                  'Status Pendaftaran':
+                    (item)=>(
+                      <td>
+                        <CBadge style={{padding: '5%'}} color={getBadge(item.status_pendaftaran)}>
+                          {item.status_pendaftaran}
+                        </CBadge>
+                      </td>
+                    ),
                 }}
               />
               {/* <p style={{float: 'right'}}>Total Pax: {totalPax} Person</p> */}
             </CCardBody>
+            
           </CCard>
-          {/* <Excel csvData={participants} fileName={"Data Tamu Undangan"} /> */}
+            {/* <Excel csvData={participants} fileName={"Data Tamu Undangan"} /> */}
         </CCol>
       </CRow>
     </>

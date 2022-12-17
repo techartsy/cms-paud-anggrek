@@ -11,7 +11,7 @@ import {
   CSidebarNavDropdown,
   CSidebarNavItem,
 } from '@coreui/react'
-import Logo from '../assets/icons/logo.png';
+import Logo from '../assets/images/logo.png';
 // import { setResponsive } from '../store/action/action';
 import { useHistory } from 'react-router';
 import CIcon from '@coreui/icons-react'
@@ -40,7 +40,7 @@ const TheSidebar = () => {
       // onShowChange={(val) => dispatch(setResponsive(val))}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
-        <img src={Logo} alt='logo' />
+        <img src={Logo} style={{width: '50%'}} alt='logo' />
         <CIcon
           className="c-sidebar-brand-minimized"
           name="sygnet"

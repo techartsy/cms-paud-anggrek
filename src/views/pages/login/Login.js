@@ -13,6 +13,7 @@ import {
   CInputGroupPrepend,
   CInputGroupText,
   CRow,
+  CAlert,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 // import { login, resetErrorMsg } from "../../../store/action/action";
@@ -23,6 +24,8 @@ import { useHistory } from "react-router";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isFailed, setIsFailed] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogin = useSelector((state) => state.cmsReducer.isLogin);
@@ -39,9 +42,10 @@ const Login = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      // dispatch(resetErrorMsg());
+      setIsFailed(false);
+      setErrMsg('');
     }, 3000);
-  }, [errorMsg]);
+  }, [isFailed]);
 
   const changeUsername = (e) => {
     setUsername(e.target.value);
@@ -57,7 +61,14 @@ const Login = () => {
       username,
       password,
     };
-    dispatch(login(userData));
+    dispatch(
+      login(
+        userData,
+        (error) => {
+          setErrMsg(error);
+          setIsFailed(true);
+        }
+      ));
     if (isLogin) {
       history.push("/dashboard");
     }
@@ -70,6 +81,9 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
+                  {isFailed && <CAlert color="danger" closeButton>
+                      {errMsg}
+                    </CAlert>}
                   <CForm onSubmit={(e) => onSubmit(e)}>
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>

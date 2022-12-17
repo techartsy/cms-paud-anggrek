@@ -12,11 +12,13 @@
 }
 
 .logout {
+  padding: 0.8rem;
   padding-left: 1rem;
   color: rgba(255, 255, 255, 0.8);
   background: transparent;
   font-size: 0.875rem;
 }
 .logout:hover {
+  background-color: rgb(40, 40, 215);
   cursor: pointer;
 }

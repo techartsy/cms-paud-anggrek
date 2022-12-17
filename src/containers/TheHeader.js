@@ -12,7 +12,7 @@ import {
   CLink
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import Logo from '../assets/icons/logo.png';
+import Logo from '../assets/images/logo.png';
 import { setResponsive } from '../store/action/action';
 import { useHistory } from 'react-router';
 // import { setIsLogin } from '../store/action/action';
@@ -57,7 +57,7 @@ const TheHeader = () => {
         onClick={toggleSidebar}
       />
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
-        <img src={Logo} alt='Techartsy' />
+        <img src={Logo} alt='Paud Anggrek 05' />
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
